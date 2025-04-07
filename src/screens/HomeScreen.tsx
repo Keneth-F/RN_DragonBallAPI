@@ -1,11 +1,13 @@
-import React, {useEffect, useState, useCallback} from 'react';
-import {View, StyleSheet, ActivityIndicator, Text, Button} from 'react-native';
-import {Character, Planet} from '../types/api';
-import {Section} from '../components/Section';
+import React, { useEffect, useState, useCallback } from 'react';
+import { View, StyleSheet, ActivityIndicator, Text, Button, Alert } from 'react-native';
+import { Character, Planet } from '../types/api';
+import { Section } from '../components/Section';
 import CharacterList from '../components/CharacterList';
 import PlanetList from '../components/PlanetList';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }: any) => {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [planets, setPlanets] = useState<Planet[]>([]);
   const [loadingCharacters, setLoadingCharacters] = useState(true);
@@ -16,6 +18,15 @@ export const HomeScreen = () => {
   );
   const [nextPlanetPage, setNextPlanetPage] = useState<string | null>(null);
 
+  const signout = async () => {
+    try {
+      await AsyncStorage.removeItem('user-session');
+      navigation.replace('Login');
+    } catch (err: any) {
+      console.log({ err });
+      Alert.alert('error');
+    }
+  };
   const fetchData = useCallback(async () => {
     setLoadingCharacters(true);
     setLoadingPlanets(true);
@@ -99,18 +110,18 @@ export const HomeScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <Button title="logout" onPress={signout} color={'#FFD700'} />
       <Section title="Personajes">
         <CharacterList
           characters={characters}
           onEndReached={loadMoreCharacters}
         />
       </Section>
-
       <Section title="Planetas">
         <PlanetList planets={planets} onEndReached={loadMorePlanets} />
       </Section>
-    </View>
+    </SafeAreaView>
   );
 };
 

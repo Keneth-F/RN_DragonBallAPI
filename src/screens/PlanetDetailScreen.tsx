@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,11 +7,11 @@ import {
   ScrollView,
   ActivityIndicator,
 } from 'react-native';
-import {Planet} from '../types/api';
+import { Planet } from '../types/api';
 import CharacterList from '../components/CharacterList';
 
-const PlanetDetailScreen = ({route}: {route: any}) => {
-  const {planet} = route.params;
+const PlanetDetailScreen = ({ route }: { route: any }) => {
+  const { planet } = route.params;
   const [fullPlanet, setFullPlanet] = useState<Planet | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -19,7 +19,6 @@ const PlanetDetailScreen = ({route}: {route: any}) => {
   useEffect(() => {
     const fetchPlanetDetails = async () => {
       try {
-        console.log({planet});
         const response = await fetch(
           `https://dragonball-api.com/api/planets/${planet.id}`,
         );
@@ -57,11 +56,10 @@ const PlanetDetailScreen = ({route}: {route: any}) => {
   if (!fullPlanet) {
     return null;
   }
-  console.log({fullPlanet});
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
       <View style={styles.container}>
-        <Image source={{uri: fullPlanet.image}} style={styles.image} />
+        <Image source={{ uri: fullPlanet.image }} style={styles.image} />
         <Text style={styles.name}>{fullPlanet.name}</Text>
 
         <View style={styles.infoContainer}>

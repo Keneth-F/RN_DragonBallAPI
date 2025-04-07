@@ -1,4 +1,4 @@
-import {useState, useCallback, useEffect, useRef} from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import CharacterList from '../components/CharacterList';
 import PlanetList from '../components/PlanetList';
-import {Section} from '../components/Section';
-import {Character, Planet} from '../types/api';
+import { Section } from '../components/Section';
+import { Character, Planet } from '../types/api';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SearchScreen() {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -38,7 +39,6 @@ export default function SearchScreen() {
 
       const charData = await charRes.json();
       const planetData = await planetRes.json();
-      console.log({charData, planetData});
       setCharacters(charData || []);
       setPlanets(planetData || []);
     } catch (err) {
@@ -94,7 +94,7 @@ export default function SearchScreen() {
     );
   }
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <TextInput
         ref={searchInputRef}
         style={styles.searchInput}
@@ -110,7 +110,7 @@ export default function SearchScreen() {
       <Section title="Planetas">
         <PlanetList planets={planets} />
       </Section>
-    </View>
+    </SafeAreaView>
   );
 }
 
