@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "234074786191",
+    "project_id": "express-upala",
+    "storage_bucket": "express-upala.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234074786191:android:77ad7134faceb43e83e3fa",
+        "android_client_info": {
+          "package_name": "com.rn_dragonballapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234074786191-pf77o427l125flb4b2d4juqorpc41d5g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rn_dragonballapi",
+            "certificate_hash": "0f5af19b86aa06df39b37ba65c0d0df5b61b33d5"
+          }
+        },
+        {
+          "client_id": "234074786191-oas51tnckjjoi1uqu3b75fr0rk15d4sg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9cKcys3kbzbG0qUIvduHgEPhUR-B_aqU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234074786191-oas51tnckjjoi1uqu3b75fr0rk15d4sg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
